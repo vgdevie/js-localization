@@ -1,7 +1,7 @@
 # js-localization
 Simple lighweight JavaScript localization for small websites.
 
-Hi to everyone, here is my small js script writen once apon a evening. Maybe it will help someone, who don't want to download big frameworks to localize a small website. 
+Hi to everyone, here is my small js script writen once upon a evening. Maybe it will help someone, who don't want to download big frameworks to localize a small website. 
 
 ### Advantdages
 * Simple installation and usage
