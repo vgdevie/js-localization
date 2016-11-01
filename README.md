@@ -114,6 +114,8 @@ document.getElementById("ls").value = loc.CL;
 </body>
 </html>
 ```
+[Open page in new tab](http://htmlpreview.github.io/?https://github.com/vgdevie/js-localization/blob/master/sample.html)
+
 ## Credits & Licensing
 
 Copyright (c) Vyacheslav Chukhno (http://vgdev.pro)
