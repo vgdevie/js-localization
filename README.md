@@ -6,7 +6,7 @@ Hi to everyone, here is my small js script writen once apon a evening. Maybe it 
 ### Advantdages
 * Simple installation and usage
 * No JQuery needed
-* Lighweight (Just 433 bytes!)
+* Lightweight (Just 433 bytes!)
 
 
 ## Installation
