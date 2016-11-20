@@ -7,6 +7,8 @@ Hi to everyone, here is my small js script writen once upon a evening. Maybe it 
 * Simple installation and usage
 * No JQuery needed
 * Lightweight (Just 483 bytes!)
+* Language changes on-the-fly
+* High Perfomance
 
 
 ## Installation
