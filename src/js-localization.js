@@ -2,33 +2,25 @@ var Localization = function (languages) {
 
     //Constructor
     var langs = languages.split(',');
-    this.CL = navigator.language || navigator.userLanguage;
-    if (this.CL.includes("-"))
-        this.CL = this.CL.charAt(0) + this.CL.charAt(1);
+    this.CL = (navigator.language || navigator.userLanguage).slice(0, 2);
 
     //Selecting language
-    this.SelectLanguage = function (language)
-    {
-        if (langs.includes(language))
-        {
-            langs.forEach(function (l)
-            {
-                Array.from(document.getElementsByTagName(l)).forEach(function (item)
-                {
-                    if (l == language)
-                        item.style.display = "inline-block";
-                    else item.style.display = "none";
-                });
+    this.SelectLanguage = function (language) {
+        if (langs.includes(language)) {
+            var old = document.getElementById("loc");
+            if (old) old.remove();
+            var style = document.createElement("style");
+            style.id = "loc";
+            var s = language + "{display:inline-block;}";
+            langs.forEach(function (l) {
+                if (l != language)
+                    s += l + ",";
             });
+            style.innerHTML = s.slice(0, -1) + "{display:none;}"
+            document.head.appendChild(style);
             this.CL = language;
         }
-        else
-            this.SelectLanguage(langs[0]);
-    }
-
-    function getElements(name)
-    {
-        document.getElementsByName(name)
+        else this.SelectLanguage(langs[0]);
     }
 
     this.SelectLanguage(this.CL);
