@@ -6,7 +6,7 @@ Hi to everyone, here is my small js script writen once upon a evening. Maybe it 
 ### Advantdages
 * Simple installation and usage
 * No JQuery needed
-* Lightweight (Just 483 bytes!)
+* Lightweight (Just 500 bytes!)
 * Language changes on-the-fly
 * High Perfomance
 
@@ -17,7 +17,7 @@ Just add this code to your pages header.
 
 ```javascript
 <script>
-var Localization=function(a){var b=a.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2),this.SelectLanguage=function(a){if(b.includes(a)){var c=document.getElementById("loc");c&&c.remove();var d=document.createElement("style");d.id="loc";var e=a+"{display:inline-block;}";b.forEach(function(b){b!=a&&(e+=b+",")}),d.innerHTML=e.slice(0,-1)+"{display:none;}",document.head.appendChild(d),this.CL=a}else this.SelectLanguage(b[0])},this.SelectLanguage(this.CL)};
+var Localization=function(n){var t=n.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;t.includes(n)?(r=document.getElementById("loc"),r&&r.remove(),i=document.createElement("style"),i.id="loc",u=n+"{display:inline-block;}",t.forEach(function(t){t!=n&&(u+=t+",")}),i.innerHTML=u.slice(0,-1)+"{display:none;}",document.head.appendChild(i),this.CL=n,localStorage.lang=n,document.dispatchEvent(this.Changed)):this.SelectLanguage(t[0])};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
 var loc = new Localization("%LANGUAGES%");
 </script>
 ```
@@ -76,6 +76,8 @@ Then add this code after initialization(Usage.Step 1), for select element proper
 document.getElementById("ls").value = loc.CL;
 ```
 
+**NOTE:** You can bind "changed" event on localization object for your js.
+
 #### Now you can switch language and all text will change at a moment!
 
 ## Whole page example
@@ -95,7 +97,7 @@ document.getElementById("ls").value = loc.CL;
             <option value="ru">Русский</option>
         </select>
 	    <script>
-var Localization=function(a){var b=a.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2),this.SelectLanguage=function(a){if(b.includes(a)){var c=document.getElementById("loc");c&&c.remove();var d=document.createElement("style");d.id="loc";var e=a+"{display:inline-block;}";b.forEach(function(b){b!=a&&(e+=b+",")}),d.innerHTML=e.slice(0,-1)+"{display:none;}",document.head.appendChild(d),this.CL=a}else this.SelectLanguage(b[0])},this.SelectLanguage(this.CL)};
+var Localization=function(n){var t=n.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;t.includes(n)?(r=document.getElementById("loc"),r&&r.remove(),i=document.createElement("style"),i.id="loc",u=n+"{display:inline-block;}",t.forEach(function(t){t!=n&&(u+=t+",")}),i.innerHTML=u.slice(0,-1)+"{display:none;}",document.head.appendChild(i),this.CL=n,localStorage.lang=n,document.dispatchEvent(this.Changed)):this.SelectLanguage(t[0])};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
         var loc = new Localization("en,ru");
         document.getElementById("ls").value = loc.CL;
     </script>
