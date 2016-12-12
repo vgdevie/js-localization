@@ -4,6 +4,9 @@ var Localization = function (languages) {
     var langs = languages.split(',');
     this.CL = (navigator.language || navigator.userLanguage).slice(0, 2);
 
+    //Lang Changed event
+    this.Changed = new Event("changed");
+
     //Selecting language
     this.SelectLanguage = function (language) {
         if (langs.includes(language)) {
@@ -19,9 +22,13 @@ var Localization = function (languages) {
             style.innerHTML = s.slice(0, -1) + "{display:none;}"
             document.head.appendChild(style);
             this.CL = language;
+            localStorage.lang = language;
+            // Calling event
+            document.dispatchEvent(this.Changed);
         }
         else this.SelectLanguage(langs[0]);
     }
 
-    this.SelectLanguage(this.CL);
+    if (localStorage.lang == null) this.SelectLanguage(this.CL);
+    else this.SelectLanguage(localStorage.lang);
 }
