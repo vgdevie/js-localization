@@ -18,7 +18,7 @@ Just add this code to your pages header.
 
 ```javascript
 <script>
-var Localization=function(n){var t=n.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;t.includes(n)?(r=document.getElementById("loc"),r&&r.remove(),i=document.createElement("style"),i.id="loc",u=n+"{display:inline-block;}",t.forEach(function(t){t!=n&&(u+=t+",")}),i.innerHTML=u.slice(0,-1)+"{display:none;}",document.head.appendChild(i),this.CL=n,localStorage.lang=n,document.dispatchEvent(this.Changed)):this.SelectLanguage(t[0])};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
+var Localization=function(n){var t=n.split(",");this.CL="ru";this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;try{r=document.getElementById("loc");r!=null&&r.remove();i=document.createElement("style");i.id="loc";u=n+"{display:inline-block;}";t.forEach(function(t){t!=n&&(u+=t+",")});i.innerHTML=u.slice(0,-1)+"{display:none !important;}";document.head.appendChild(i);this.CL=n;localStorage.lang=n;document.dispatchEvent(this.Changed)}catch(f){this.SelectLanguage(t[0])}};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
 var loc = new Localization("%LANGUAGES%");
 </script>
 ```
@@ -98,7 +98,7 @@ document.getElementById("ls").value = loc.CL;
             <option value="ru">Русский</option>
         </select>
 	    <script>
-var Localization=function(n){var t=n.split(",");this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;t.includes(n)?(r=document.getElementById("loc"),r&&r.remove(),i=document.createElement("style"),i.id="loc",u=n+"{display:inline-block;}",t.forEach(function(t){t!=n&&(u+=t+",")}),i.innerHTML=u.slice(0,-1)+"{display:none;}",document.head.appendChild(i),this.CL=n,localStorage.lang=n,document.dispatchEvent(this.Changed)):this.SelectLanguage(t[0])};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
+var Localization=function(n){var t=n.split(",");this.CL="ru";this.CL=(navigator.language||navigator.userLanguage).slice(0,2);this.Changed=new Event("changed");this.SelectLanguage=function(n){var r,i,u;try{r=document.getElementById("loc");r!=null&&r.remove();i=document.createElement("style");i.id="loc";u=n+"{display:inline-block;}";t.forEach(function(t){t!=n&&(u+=t+",")});i.innerHTML=u.slice(0,-1)+"{display:none !important;}";document.head.appendChild(i);this.CL=n;localStorage.lang=n;document.dispatchEvent(this.Changed)}catch(f){this.SelectLanguage(t[0])}};localStorage.lang==null?this.SelectLanguage(this.CL):this.SelectLanguage(localStorage.lang)};
         var loc = new Localization("en,ru");
         document.getElementById("ls").value = loc.CL;
     </script>
