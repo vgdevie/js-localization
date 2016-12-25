@@ -2,6 +2,7 @@ var Localization = function (languages) {
 
     //Constructor
     var langs = languages.split(',');
+    this.CL = "ru";
     this.CL = (navigator.language || navigator.userLanguage).slice(0, 2);
 
     //Lang Changed event
@@ -9,9 +10,9 @@ var Localization = function (languages) {
 
     //Selecting language
     this.SelectLanguage = function (language) {
-        if (langs.includes(language)) {
+        try {
             var old = document.getElementById("loc");
-            if (old) old.remove();
+            if (old != null) old.remove();
             var style = document.createElement("style");
             style.id = "loc";
             var s = language + "{display:inline-block;}";
@@ -19,14 +20,16 @@ var Localization = function (languages) {
                 if (l != language)
                     s += l + ",";
             });
-            style.innerHTML = s.slice(0, -1) + "{display:none;}"
+            style.innerHTML = s.slice(0, -1) + "{display:none !important;}"
             document.head.appendChild(style);
             this.CL = language;
             localStorage.lang = language;
-            // Calling event
+            //Calling event
             document.dispatchEvent(this.Changed);
         }
-        else this.SelectLanguage(langs[0]);
+        catch (ex) {
+            this.SelectLanguage(langs[0]);
+        }
     }
 
     if (localStorage.lang == null) this.SelectLanguage(this.CL);
