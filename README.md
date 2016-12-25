@@ -10,6 +10,7 @@ Hi to everyone, here is my small js script writen once upon a evening. Maybe it 
 * Lightweight (Just 500 bytes!)
 * Language changes on-the-fly
 * High Perfomance
+* Supports 99% of browsers
 
 
 ## Installation
