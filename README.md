@@ -125,7 +125,7 @@ var Localization=function(n){var t=n.split(",");this.CL="ru";this.CL=(navigator.
 
 ## Credits & Licensing
 
-Copyright (c) Vyacheslav Chukhno (http://vgdev.pro)
+Copyright (c) Viacheslav Chukhno 2016
 
 Please use it, and contribute changes.
 
